@@ -20,7 +20,6 @@ namespace SistemaLivros.Models
         [Required(ErrorMessage = "Informe o seu RG", AllowEmptyStrings = false)]
         public string RG { get; set; }
 
-
         [Required(ErrorMessage = "Informe o seu email", AllowEmptyStrings = false)]
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido !")]
         public string Email { get; set; }
@@ -28,11 +27,7 @@ namespace SistemaLivros.Models
         [Required(ErrorMessage = "Informe o seu Telefone", AllowEmptyStrings = false)]
         public string Telefone { get; set; }
 
-        [Required(ErrorMessage = "Informe uma senha", AllowEmptyStrings = false)]
-        public string Senha { get; set; }
-
         public virtual Endereco _Endereco { get; set; }
-
 
         public int EnderecoID { get; set; }
 

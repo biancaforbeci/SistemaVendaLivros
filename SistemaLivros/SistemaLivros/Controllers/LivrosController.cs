@@ -25,6 +25,21 @@ namespace SistemaLivros.Controllers
             return View();
         }
 
-      
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Livro livro)
+        {
+            if (ModelState.IsValid)
+            {
+                MeuContexto contexto = new MeuContexto();
+                contexto.Livros.Add(livro);
+                contexto.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+
     }
 }

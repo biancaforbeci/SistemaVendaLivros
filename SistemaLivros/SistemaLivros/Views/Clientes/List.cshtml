@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model._Endereco.Rua)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
@@ -29,14 +26,23 @@
         <th>
             @Html.DisplayNameFor(model => model.Telefone)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model._Endereco.Rua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._Endereco.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._Endereco.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._Endereco.CEP)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item._Endereco.Rua)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
@@ -53,9 +59,21 @@
             @Html.DisplayFor(modelItem => item.Telefone)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClienteID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClienteID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClienteID })
+            @Html.DisplayFor(modelItem => item._Endereco.Rua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._Endereco.Numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._Endereco.Bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._Endereco.CEP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ClienteID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ClienteID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ClienteID })
         </td>
     </tr>
 }

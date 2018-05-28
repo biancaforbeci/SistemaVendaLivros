@@ -22,10 +22,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Preco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Caminho)
-        </th>
+        </th>        
         <th></th>
     </tr>
 
@@ -42,10 +39,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Preco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Caminho)
-        </td>
+        </td>        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.LivroID }) |
             @Html.ActionLink("Details", "Details", new { id=item.LivroID }) |
