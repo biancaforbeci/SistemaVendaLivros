@@ -107,5 +107,43 @@ namespace SistemaLivros.Controllers
         }
 
 
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);  //retorna erro http diferente, requisição mau feita.
+            }
+
+            MeuContexto contexto = new MeuContexto();
+            Cliente cli = contexto.Clientes.Find(id);
+
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            return View(cli);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+                MeuContexto contexto = new MeuContexto();
+                Cliente cli = contexto.Clientes.Find(id);
+                contexto.Clientes.Remove(cli);
+                contexto.SaveChanges();
+                return RedirectToAction("List");
+            }
+            catch (Exception e)
+            {
+                return View(e);
+            }
+            
+        }
+
     }
 }
