@@ -13,7 +13,17 @@ namespace SistemaLivros.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Visao()
+        {
+            return View();
+        }
+
+        public ActionResult Missao()
+        {
+            return View();
+        }
+
+        public ActionResult Valores()
         {
             return View();
         }

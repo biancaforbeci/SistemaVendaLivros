@@ -212,7 +212,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Livros\Create.cshtml" />
@@ -227,6 +226,9 @@
     <Content Include="Views\Clientes\Create.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Livros\Busca.cshtml" />
+    <Content Include="Views\Home\Visao.cshtml" />
+    <Content Include="Views\Home\Missao.cshtml" />
+    <Content Include="Views\Home\Valores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
