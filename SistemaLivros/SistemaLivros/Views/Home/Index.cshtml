@@ -2,33 +2,47 @@
     ViewBag.Title = "Home Page";
 }
 
+<head>
+    <link rel=”stylesheet” type=”text/css” href=~/Content/EstiloPáginas.css />
+</head>
+
 <div class="jumbotron">
-    <h1>Estante de Livros</h1>
-    <p class="lead"><b>Os melhores livros estão aqui !!</b></p>
-    <img src="~/fonts/estante-de-livros.jpg" />
+        <h1 style="text-align:center; background-color:blueviolet"><b>Estante de Livros</b></h1>
+        <p style="text-align:center;font-family:Castellar"><b>Os melhores livros estão aqui !!</b></p>
+      <img src="~/fonts/estante-de-livros.jpg"  style="width:auto;height:auto;align-items:center"/>
     <br />
     <br />
-    <p><a href="~/Views/Livros/" class="btn btn-primary btn-lg">Cadastre e compre já ! &raquo;</a></p>
+    <p> <a class="btn btn-primary btn-lg" @Html.ActionLink("Cadastre-se e compre já !!", "Create", "Clientes") &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Missão</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Disponibilizar um acervo de livros atualizados e que abrangem os mais diversos gêneros, disponibilizando da maneira mais acessível e a baixo custo livros de qualidade para o cliente ter uma experiência única na compra e incentivando a disseminação de cultura.
         </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <h2>Visão</h2>
+        <p>
+            <b>Acreditamos no poder transformador da informação e da cultura.</b>
+            <br />
+            Nosso objetivo é ser o melhor E-Commerce de livros, disseminando informação e cultura, para assim ajudar a construir e viver em um mundo melhor e mais justo.
+        </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <h2>Valores</h2>
+        <ul>
+            <li>Diversidade</li>
+            <li>Responsabilidade</li>
+            <li>Inovação</li>
+        </ul>        
+        
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+
+

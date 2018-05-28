@@ -26,9 +26,10 @@ namespace SistemaLivros.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Informe o seu Telefone", AllowEmptyStrings = false)]
-        [RegularExpression("/^(?:(?:\\+|00)?(55)\\s?)?(?:\\(?([1-9][0-9])\\)?\\s?)?(?:((?:9\\d|[2-9])\\d{3})\\-?(\\d{4}))$/", ErrorMessage = "Informe um telefone válido !")]
         public string Telefone { get; set; }
 
+        [Required(ErrorMessage = "Informe uma senha", AllowEmptyStrings = false)]
+        public string Senha { get; set; }
 
         public virtual Endereco _Endereco { get; set; }
 
