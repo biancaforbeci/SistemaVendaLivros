@@ -31,13 +31,104 @@ namespace SistemaLivros.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                    MeuContexto contexto = new MeuContexto();
+                    contexto.Livros.Add(livro);
+                    contexto.SaveChanges();
+                    return RedirectToAction("Index");
+                
+            }
+
+            return View(livro);
+        }
+
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);  //retorna erro http diferente, requisição mau feita.
+            }
+
+            MeuContexto contexto = new MeuContexto();
+            Livro livro = contexto.Livros.Find(id);
+
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            return View(livro);
+        }
+
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
                 MeuContexto contexto = new MeuContexto();
-                contexto.Livros.Add(livro);
+                Livro livro = contexto.Livros.Find(id);
+                contexto.Livros.Remove(livro);
                 contexto.SaveChanges();
                 return RedirectToAction("Index");
             }
+            catch (Exception e)
+            {
+                return View(e);
+            }
+        }
 
-            return View();
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);  //retorna erro http diferente, requisição mau feita.
+            }
+
+            MeuContexto contexto = new MeuContexto();
+            Livro livro = contexto.Livros.Find(id);
+
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            return View(livro);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Livro livro)
+        {
+            if (ModelState.IsValid)
+            {
+                MeuContexto contexto = new MeuContexto();
+                contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
+                contexto.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(livro);
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);  //retorna erro http diferente, requisição mau feita.
+            }
+
+            MeuContexto contexto = new MeuContexto();
+            Livro user = contexto.Livros.Find(id);
+
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(user);
         }
 
 

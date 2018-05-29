@@ -94,14 +94,35 @@ namespace SistemaLivros.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Cliente cli)
+        public ActionResult Edit(int? id,Cliente cli)
         {
             if (ModelState.IsValid)
             {
-                MeuContexto contexto = new MeuContexto();
-                contexto.Entry(cli).State = System.Data.Entity.EntityState.Modified;
-                contexto.SaveChanges();
-                return RedirectToAction("List");
+                try
+                {
+                    MeuContexto contexto = new MeuContexto();
+                    Endereco end = (from x in contexto.Enderecos
+                                    where x.EnderecoID.Equals(id)
+                                    select x).FirstOrDefault();
+                    if (end == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+
+                    end.Rua = cli._Endereco.Rua;
+                    end.Numero = cli._Endereco.Numero;
+                    end.Bairro = cli._Endereco.Bairro;
+                    end.CEP = cli._Endereco.CEP;
+                    contexto.Entry(end).State = System.Data.Entity.EntityState.Modified;
+                    contexto.Entry(cli).State = System.Data.Entity.EntityState.Modified;
+                    contexto.SaveChanges();
+                    return RedirectToAction("List");
+                }catch(Exception e)
+                {
+                    return View(e);
+                }
+               
             }
             return View(cli);
         }
@@ -134,7 +155,11 @@ namespace SistemaLivros.Controllers
             {
                 MeuContexto contexto = new MeuContexto();
                 Cliente cli = contexto.Clientes.Find(id);
-                contexto.Clientes.Remove(cli);
+                Endereco end = (from x in contexto.Enderecos
+                                   where x.EnderecoID.Equals(cli.EnderecoID)
+                                   select x).FirstOrDefault();
+                contexto.Enderecos.Remove(end);
+                contexto.Clientes.Remove(cli);                
                 contexto.SaveChanges();
                 return RedirectToAction("List");
             }

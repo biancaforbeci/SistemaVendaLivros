@@ -20,11 +20,10 @@ namespace SistemaLivros.Models
         [Required(ErrorMessage = "Digite uma quantidade", AllowEmptyStrings = false)]
         public int Qtd { get; set; }
 
-        [Required(ErrorMessage = "Digite um preço", AllowEmptyStrings = false)]
-        [Range(10, 99999.99,ErrorMessage = "O Preço de Venda deve estar entre " + "10,00 e 99999,99.")]
+        
         public Decimal Preco { get; set; }
 
-        [Required(ErrorMessage = "Coloque uma imagem !", AllowEmptyStrings = false)]
+        
         public string Caminho { get; set; }
     }
 }

@@ -4,10 +4,10 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2 style="text-align:center"><b>Excluir Livro</b></h2>
+<hr />
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
+<h3>Deseja excluir permanentemente esse livro?</h3><div>
     <h4>Livro</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -43,17 +43,11 @@
             @Html.DisplayFor(model => model.Preco)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Caminho)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Caminho)
-        </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
