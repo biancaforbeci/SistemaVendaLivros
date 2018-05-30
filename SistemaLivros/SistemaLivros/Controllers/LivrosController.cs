@@ -27,16 +27,21 @@ namespace SistemaLivros.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Livro livro)
+        public ActionResult Create(Livro livro, HttpPostedFileBase file)
         {
+
             if (ModelState.IsValid)
             {
-                
+                if (file != null)
+                {
+                    file.SaveAs(HttpContext.Server.MapPath("~/fonts/")
+                           + file.FileName);
+                    livro.Foto = file.FileName;
                     MeuContexto contexto = new MeuContexto();
                     contexto.Livros.Add(livro);
                     contexto.SaveChanges();
                     return RedirectToAction("Index");
-                
+                }
             }
 
             return View(livro);
@@ -101,14 +106,21 @@ namespace SistemaLivros.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Livro livro)
+        public ActionResult Edit(Livro livro, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                MeuContexto contexto = new MeuContexto();
-                contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
-                contexto.SaveChanges();
-                return RedirectToAction("Index");
+                if (file != null)
+                {
+                    file.SaveAs(HttpContext.Server.MapPath("~/fonts/")
+                           + file.FileName);
+                    
+                    livro.Foto = file.FileName;
+                    MeuContexto contexto = new MeuContexto();
+                    contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
+                    contexto.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             return View(livro);
         }

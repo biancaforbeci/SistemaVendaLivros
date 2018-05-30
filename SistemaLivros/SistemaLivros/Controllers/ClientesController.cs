@@ -2,6 +2,7 @@
 using SistemaLivros.Models.DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -10,8 +11,10 @@ using System.Web.Mvc;
 
 namespace SistemaLivros.Controllers
 {
+    
     public class ClientesController : Controller
     {
+        
         // GET: Clientes
         public ActionResult Index()
         {                      
@@ -92,39 +95,40 @@ namespace SistemaLivros.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id,Cliente cli)
+        public ActionResult EditPost(int? id)
         {
+            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            MeuContexto contexto = new MeuContexto();
+             var clienteToUpdate = contexto.Clientes.Find(id);
             if (ModelState.IsValid)
             {
-                try
+                 int endID = clienteToUpdate.EnderecoID;
+                var endToUpdate = contexto.Enderecos.Find(endID);
+                if (TryUpdateModel(clienteToUpdate, "", new string[] { "Nome", "CPF", "RG", "Email", "Telefone" }) &&
+                   TryUpdateModel(endToUpdate, "", new string[] { "_Endereco.Rua", "_Endereco.Numero", "_Endereco.Bairro", "_Endereco.CEP" }))
                 {
-                    MeuContexto contexto = new MeuContexto();
-                    Endereco end = (from x in contexto.Enderecos
-                                    where x.EnderecoID.Equals(id)
-                                    select x).FirstOrDefault();
-                    if (end == null)
+                    try
                     {
-                        return HttpNotFound();
+                        contexto.SaveChanges();
+
+                        return RedirectToAction("List");
                     }
-
-
-                    end.Rua = cli._Endereco.Rua;
-                    end.Numero = cli._Endereco.Numero;
-                    end.Bairro = cli._Endereco.Bairro;
-                    end.CEP = cli._Endereco.CEP;
-                    contexto.Entry(end).State = System.Data.Entity.EntityState.Modified;
-                    contexto.Entry(cli).State = System.Data.Entity.EntityState.Modified;
-                    contexto.SaveChanges();
-                    return RedirectToAction("List");
-                }catch(Exception e)
-                {
-                    return View(e);
+                    catch (RetryLimitExceededException /* dex */)
+                    {
+                        //Log the error (uncomment dex variable name and add a line here to write a log.
+                        ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    }
                 }
-               
             }
-            return View(cli);
+            
+            return View(clienteToUpdate);
         }
 
 

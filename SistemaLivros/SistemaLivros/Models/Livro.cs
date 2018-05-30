@@ -24,6 +24,6 @@ namespace SistemaLivros.Models
         public Decimal Preco { get; set; }
 
         
-        public string Caminho { get; set; }
+        public string Foto { get; set; }
     }
 }

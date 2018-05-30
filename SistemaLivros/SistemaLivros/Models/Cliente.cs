@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,8 @@ namespace SistemaLivros.Models
 {
     public class Cliente
     {
+
+        [Key, ForeignKey("_Endereco")]
         public int ClienteID { get; set; }
 
         [Required(ErrorMessage = "O nome do usuário é obrigatório", AllowEmptyStrings = false)]

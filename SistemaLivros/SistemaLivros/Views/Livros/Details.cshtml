@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    var ImagePath = Model.Foto;
 }
 
 <h2>Details</h2>
@@ -43,11 +44,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Caminho)
+            @Html.DisplayNameFor(model => model.Foto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Caminho)
+            <img src="~/fonts/@ImagePath" width="150" height="150" />
         </dd>
 
     </dl>

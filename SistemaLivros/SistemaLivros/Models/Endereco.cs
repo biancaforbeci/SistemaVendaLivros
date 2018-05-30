@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,7 @@ namespace SistemaLivros.Models
     public class Endereco
     {
 
-
+        [Key, ForeignKey("_Cliente")]
         public int EnderecoID { get; set; }
 
         [Required(ErrorMessage = "Informe a sua rua", AllowEmptyStrings = false)]
@@ -27,6 +28,9 @@ namespace SistemaLivros.Models
 
         [Required(ErrorMessage = "Informe o seu CEP", AllowEmptyStrings = false)]
         public int CEP { get; set; }
+
+        public virtual Cliente _Cliente { get; set; }
+       
 
     }
 }
