@@ -16,6 +16,7 @@ namespace SistemaLivros.Controllers
         {
             MeuContexto contexto = new MeuContexto();
             List<Livro> lista = contexto.Livros.ToList();
+            ViewBag.MeusLivros = lista;
 
             return View(lista);
         }
@@ -143,6 +144,15 @@ namespace SistemaLivros.Controllers
             return View(user);
         }
 
+        public ActionResult Busca()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Busca(String busca)
+        {
+            return View();
+        }
     }
 }

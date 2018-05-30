@@ -22,8 +22,17 @@ namespace SistemaLivros.Models
 
         
         public Decimal Preco { get; set; }
-
         
         public string Foto { get; set; }
+
+        public string Editora { get; set; }
+
+        public int Edicao { get; set; }
+
+        public int AnoEdicao { get; set; }
+
+        public string Autor { get; set; }
+
+        public int NumeroPaginas { get; set; }
     }
 }

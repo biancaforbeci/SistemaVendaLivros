@@ -1,83 +1,51 @@
 ﻿@using SistemaLivros.Models
-@Model IEnumerable<SistemaLivros.Models.Livro>
-    @{
-        ViewBag.Title = "Home Page";
+@{
+    ViewBag.Title = "Home Page";
 
-    }
+}
 
-    <head>
+<head>
 
-        <link href="~/Content/Estilo.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Estilo.css" rel="stylesheet" type="text/css" />
 
-    </head>
-    <body>
-        <div class="jumbotron">
-            <h1 style="text-align:center; background-color:blueviolet"><b>Estante de Livros</b></h1>
-            <p style="text-align:center;font-family:Castellar"><b>Os melhores livros estão aqui !!</b></p>
-            <img src="~/fonts/estante-de-livros.jpg" style="width:auto;height:auto;align-items:center" />
-            <br />
-            <br />
-            <p> <a class="btn btn-primary btn-lg" @Html.ActionLink("Cadastre-se e compre já !!", "Create", "Clientes") &raquo;</a></p>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 style="text-align:center; background-color:blueviolet"><b>Estante de Livros</b></h1>
+        <p style="text-align:center;font-family:Castellar"><b>Os melhores livros estão aqui !!</b></p>
+        <img src="~/fonts/estante-de-livros.jpg" style="width:auto;height:auto;align-items:center" />
+        <br />
+        <br />
+        <p> <a class="btn btn-primary btn-lg" @Html.ActionLink("Cadastre-se e compre já !!", "Create", "Clientes") &raquo;</a></p>
 
-            <h2>Produtos</h2>
-
-            </br>
-
-            <p>NOVIDADES EM DESTAQUE</p>
-
-            <br />
-
-            <br />
-
-            @foreach (Livro p in Model)
-
-            {
-
-                <div id="posicaoProduto">
-
-                    <b> @Html.DisplayTextFor(b => p.Nome) </b>
-
-                    <img src="~/fonts/@p.Foto" id="imagem" />
-
-                    <b> @Html.DisplayNameFor(m => p.Preco) = R$ @Html.DisplayTextFor(b => p.Preco) </b>
-
-                    <br />
-
-                    <p><br /> @Html.DisplayTextFor(b => p.Descricao) </p>
-
-                </div>
-
-            }
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Missão</h2>
+            <p>
+                Disponibilizar um acervo de livros atualizados e que abrangem os mais diversos gêneros, disponibilizando da maneira mais acessível e a baixo custo livros de qualidade para o cliente ter uma experiência única na compra e incentivando a disseminação de cultura.
+            </p>
+            <p><a class="btn btn-default" @Html.ActionLink("Saiba mais", "Missao", "Home") &raquo;</a></p>
         </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Missão</h2>
-                <p>
-                    Disponibilizar um acervo de livros atualizados e que abrangem os mais diversos gêneros, disponibilizando da maneira mais acessível e a baixo custo livros de qualidade para o cliente ter uma experiência única na compra e incentivando a disseminação de cultura.
-                </p>
-                <p><a class="btn btn-default" @Html.ActionLink("Saiba mais", "Missao", "Home") &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Visão</h2>
-                <p>
-                    <b>Acreditamos no poder transformador da informação e da cultura.</b>
-                    <br />
-                    Nosso objetivo é ser o melhor E-Commerce de livros, disseminando informação e cultura, para assim ajudar a construir e viver em um mundo melhor e mais justo.
-                </p>
-                <p><a class="btn btn-default" @Html.ActionLink("Saiba mais", "Visao", "Home") &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Valores</h2>
-                <ul>
-                    <li>Diversidade</li>
-                    <li>Responsabilidade</li>
-                    <li>Inovação</li>
-                </ul>
-
-                <p><a class="btn btn-default" @Html.ActionLink("Saiba mais", "Valores", "Home") &raquo;</a></p>
-            </div>
+        <div class="col-md-4">
+            <h2>Visão</h2>
+            <p>
+                <b>Acreditamos no poder transformador da informação e da cultura.</b>
+                <br />
+                Nosso objetivo é ser o melhor E-Commerce de livros, disseminando informação e cultura, para assim ajudar a construir e viver em um mundo melhor e mais justo.
+            </p>
+            <p><a class="btn btn-default" @Html.ActionLink("Saiba mais", "Visao", "Home") &raquo;</a></p>
         </div>
-    </body>
+        <div class="col-md-4">
+            <h2>Valores</h2>
+            <ul>
+                <li>Diversidade</li>
+                <li>Responsabilidade</li>
+                <li>Inovação</li>
+            </ul>
+
+            <p><a class="btn btn-default" @Html.ActionLink("Saiba mais", "Valores", "Home") &raquo;</a></p>
+        </div>
+    </div>
+</body>
 
 

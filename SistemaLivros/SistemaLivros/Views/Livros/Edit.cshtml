@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    var ImagePath = Model.Foto;
 }
 
 <h2>Edit</h2>
@@ -18,12 +19,7 @@
 
         @Html.HiddenFor(model => model.LivroID)
         <fieldset>
-            <div class="form-group">
-                @Html.DisplayFor(modelItem => modelItem.Foto)
-                <div class="col-md-10">
-                    <img src="@Model.Foto" width="150" />
-                </div>
-            </div>
+              <img src="~/fonts/@ImagePath" width="150" height="150" style="text-align:center; display:inline-block"/>
             <div class="form-group">
                 @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
