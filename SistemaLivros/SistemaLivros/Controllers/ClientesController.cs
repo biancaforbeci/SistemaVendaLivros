@@ -77,6 +77,11 @@ namespace SistemaLivros.Controllers
             return View(cli);
         }
        
+        public void EditUser()
+        {
+            MeuContexto contexto = new MeuContexto();
+            
+        }
 
         public ActionResult List()
         {

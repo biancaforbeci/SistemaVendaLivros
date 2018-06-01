@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SistemaLivros.Models.DAL;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace SistemaLivros.Controllers
 {
@@ -86,6 +87,10 @@ namespace SistemaLivros.Controllers
 
         public ActionResult Index(LoginViewModel login)
         {
+            if(Session["cliente"]!= null)
+            {
+                User.Identity.GetUserId();
+            }
             return View(login);
         }
 

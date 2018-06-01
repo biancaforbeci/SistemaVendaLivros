@@ -11,6 +11,15 @@
     <h4>Livro</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            <img src="~/fonts/@ImagePath" width="150" height="150" />
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
@@ -74,22 +83,16 @@
         <dd>
             @Html.DisplayFor(model => model.Edicao)
         </dd>
-        
 
-        <dd>
-            @Html.DisplayFor(model => model.AnoEdicao)
-        </dd>
-        <dd>
-            @Html.DisplayFor(model => model.AnoEdicao)
-        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Foto)
+            @Html.DisplayFor(model => model.AnoEdicao)
         </dt>
-
         <dd>
-            <img src="~/fonts/@ImagePath" width="150" height="150" />
+            @Html.DisplayFor(model => model.AnoEdicao)
         </dd>
+
+
 
     </dl>
 </div>

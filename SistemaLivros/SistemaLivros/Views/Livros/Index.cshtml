@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    
 }
 
 <h2>Index</h2>
@@ -12,38 +13,44 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descricao)
+            @Html.DisplayNameFor(model => model.Editora)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Qtd)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Preco)
-        </th>        
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            <img src="~/fonts/@item.Foto" width="150" height="150" />
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
+            @Html.DisplayFor(modelItem => item.Editora)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Qtd)
         </td>
-        <td>
+        <td style="color:red">
             @Html.DisplayFor(modelItem => item.Preco)
-        </td>        
+        </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LivroID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LivroID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LivroID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.LivroID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.LivroID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.LivroID })
         </td>
     </tr>
 }
