@@ -194,6 +194,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Estilo.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\atenção.png" />
     <Content Include="fonts\endereco-fiscal.png" />
     <Content Include="fonts\estante-de-livros.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
