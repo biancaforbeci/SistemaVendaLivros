@@ -34,6 +34,5 @@ namespace SistemaLivros.Models
 
         public int EnderecoID { get; set; }
 
-
     }
 }

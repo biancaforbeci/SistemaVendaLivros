@@ -17,6 +17,7 @@ namespace SistemaLivros.Models.DAL
         public DbSet<Livro> Livros { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<LoginViewModel> Usuarios { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); }

@@ -14,14 +14,18 @@ namespace SistemaLivros.Controllers
     
     public class ClientesController : Controller
     {
-        
+                
         // GET: Clientes
         public ActionResult Index()
         {                      
             return View();
         }
 
-        
+        public void SalvaClienteLogin(Cliente cli)
+        {
+            MeuContexto contexto = new MeuContexto();
+            
+        }
 
         public ActionResult Create()
         {
@@ -57,10 +61,17 @@ namespace SistemaLivros.Controllers
 
             if (ModelState.IsValid)
             {
-                MeuContexto contexto = new MeuContexto();
-                contexto.Clientes.Add(cli);
-                contexto.SaveChanges();
-                return RedirectToAction("List");
+                try
+                {
+                    MeuContexto contexto = new MeuContexto();
+                    contexto.Clientes.Add(cli);
+                    contexto.SaveChanges();
+                    SalvaClienteLogin(cli);
+                    return RedirectToAction("List");
+                }catch(Exception e)
+                {
+                    return View(e);
+                }
             }
 
             return View(cli);

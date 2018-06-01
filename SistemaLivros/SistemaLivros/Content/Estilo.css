@@ -5,3 +5,13 @@
 #imagem{
     
 }
+
+.but_clientes {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid black;
+    border-radius: 10px;
+}
