@@ -29,14 +29,14 @@ namespace SistemaLivros.Controllers
             if (ModelState.IsValid)
             {
                 MeuContexto contexto = new MeuContexto();
-                var v = contexto.Usuarios.Where(a => a.Email.Equals(login.Email)).FirstOrDefault();
+                var v = contexto.Usuarios.Where(a => a.Email.Equals(login.Email) && a.Password.Equals(login.Password)).FirstOrDefault();
 
                 if (v == null)
                 {
                     ModelState.AddModelError("Email", "Esse email ainda não está cadastrado");
                     return View(login);
                 }
-                Session["emailUsuarioLogado"] = login.Email.ToString();
+                User = v;
                 Session["cliente"] = contexto.Clientes.Find(login.UserID);
                 return RedirectToAction("Index");
             }
@@ -57,13 +57,9 @@ namespace SistemaLivros.Controllers
         {
 
             MeuContexto contexto = new MeuContexto();
-            var v = contexto.Usuarios.Where(a => a.Email.Equals(user.Email)).FirstOrDefault();
+            
 
-            if (v != null)
-            {
-                ModelState.AddModelError("Email", "Esse email já está cadastrado");
-                return View(user);
-            }
+            
 
             if (ModelState.IsValid)
             {
@@ -74,9 +70,8 @@ namespace SistemaLivros.Controllers
                     novo.Email = user.Email.ToString();
                     novo.Password = user.Password.ToString();
                     contexto.Usuarios.Add(novo);
-                    contexto.SaveChanges();
-                    Session["emailUsuarioLogado"] = user.Email.ToString();
-                    Session["cliente"] = (contexto.Clientes.Where(a => a.Email.Equals(user.Email)).FirstOrDefault()).Nome;
+                    contexto.SaveChanges();               
+                    
                     return RedirectToAction("Index");
                 }
                 catch (Exception e)

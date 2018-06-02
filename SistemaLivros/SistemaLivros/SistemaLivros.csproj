@@ -184,6 +184,7 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\DAL\MeuContexto.cs" />
     <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\EscolhaLivroViewModel.cs" />
     <Compile Include="Models\Livro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace SistemaLivros.Controllers
 {
@@ -144,15 +145,67 @@ namespace SistemaLivros.Controllers
             return View(user);
         }
 
-        public ActionResult Busca()
+        public ActionResult Busca(object sender, EventArgs e)
         {
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            items.Add(new SelectListItem { Text = "Nome do Autor", Value = "0" });
+
+            items.Add(new SelectListItem { Text = "Título", Value = "1" });
+
+            ViewBag.MovieType = items;
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult Busca(String busca)
+        public ActionResult Busca(int value,string opcao)
         {
-            return View();
+           
+            if (value == 0)
+            {
+                try
+                {
+                    MeuContexto contexto = new MeuContexto();
+                    List<Livro> busca = (from x in contexto.Livros
+                                         where x.Autor.Equals(opcao)
+                                         select x).ToList();
+                    if(busca.Count < 0)
+                    {
+                        return HttpNotFound();
+                    }
+
+
+                    return View(busca);
+                }
+                catch(Exception e)
+                {
+                    return View(e);
+                }                       
+            }
+
+            if (value == 1)
+            {
+                try
+                {
+                    MeuContexto contexto = new MeuContexto();
+                    List<Livro> busca = (from x in contexto.Livros
+                                         where x.Nome.Equals(opcao)
+                                         select x).ToList();
+                    if (busca.Count < 0)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    return View(busca);
+                }catch(Exception e)
+                {
+                    return View(e);
+                }
+                
+            }
+
+            return (HttpNotFound());
         }
         
     }

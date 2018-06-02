@@ -7,8 +7,6 @@
 }
 
 <body>
-@if (Session["emailUsuarioLogado"] != null)
-{
     if (Session["cliente"] == null)
     {
         <div style="text-align:center">
@@ -29,5 +27,4 @@
     {
         <h2>Bem-Vindo @Session["cliente"]</h2>
     }
-}
 </body>

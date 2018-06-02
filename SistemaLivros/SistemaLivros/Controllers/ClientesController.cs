@@ -25,7 +25,7 @@ namespace SistemaLivros.Controllers
         public void SalvaClienteLogin(Cliente cli)
         {
             MeuContexto contexto = new MeuContexto();
-            AccountController.User.ClienteID = cli.ClienteID;
+            //AccountController.User.ClienteID = cli.ClienteID;
             contexto.Entry(AccountController.User).State = System.Data.Entity.EntityState.Modified;
             contexto.SaveChanges();
         }
