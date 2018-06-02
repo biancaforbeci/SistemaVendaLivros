@@ -12,6 +12,8 @@ namespace SistemaLivros.Controllers
 {
     public class AccountController : Controller
     {
+        public static LoginViewModel User;
+
         // GET: Account
         [AllowAnonymous]
         public ActionResult Login()
@@ -42,6 +44,7 @@ namespace SistemaLivros.Controllers
             return View();
         }
 
+        
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -87,10 +90,7 @@ namespace SistemaLivros.Controllers
 
         public ActionResult Index(LoginViewModel login)
         {
-            if(Session["cliente"]!= null)
-            {
-                User.Identity.GetUserId();
-            }
+            
             return View(login);
         }
 

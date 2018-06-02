@@ -14,6 +14,7 @@ namespace SistemaLivros.Controllers
     
     public class ClientesController : Controller
     {
+        
                 
         // GET: Clientes
         public ActionResult Index()
@@ -24,7 +25,9 @@ namespace SistemaLivros.Controllers
         public void SalvaClienteLogin(Cliente cli)
         {
             MeuContexto contexto = new MeuContexto();
-            
+            AccountController.User.ClienteID = cli.ClienteID;
+            contexto.Entry(AccountController.User).State = System.Data.Entity.EntityState.Modified;
+            contexto.SaveChanges();
         }
 
         public ActionResult Create()

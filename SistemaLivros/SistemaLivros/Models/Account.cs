@@ -19,6 +19,10 @@ namespace SistemaLivros.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        public int ClienteID { get; set; }
+
+        public Cliente _Cliente { get; set; }
+
     }
 
     public class RegisterViewModel
