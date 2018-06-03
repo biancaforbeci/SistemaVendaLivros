@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SistemaLivros.Models;
+using SistemaLivros.Models.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,9 @@ namespace SistemaLivros.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            MeuContexto contexto = new MeuContexto();
+            var serie = contexto.Livros.Take(5);
+            return View(serie.ToList());
         }
 
         public ActionResult Visao()

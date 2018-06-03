@@ -23,9 +23,18 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acervo de Livros", "Index", "Livros")</li>
                     <li>@Html.ActionLink("Área de Clientes", "List", "Clientes")</li>
-                    <li>@Html.ActionLink("Busca no Acervo", "Busca", "Livros")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Busca no Acervo <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Busca por Título", "BuscaPorNome", "Livros")</li>
+                            <li>@Html.ActionLink("Busca por Autor", "BuscaPorAutor", "Livros")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
+                    
                 </ul>
+                  
+                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

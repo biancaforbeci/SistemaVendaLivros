@@ -145,67 +145,55 @@ namespace SistemaLivros.Controllers
             return View(user);
         }
 
-        public ActionResult Busca(object sender, EventArgs e)
+        public ActionResult BuscaPorNome()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Busca(EscolhaLivro value, string opcao)
+        public ActionResult BuscaPorNome(string nome)
         {
-            
-            if (value.EscolhaLivroID ==1 )
+            MeuContexto contexto = new MeuContexto();
+            var serie = contexto.Livros.Where(c => c.Nome.ToLower().Equals(nome.ToLower()));
+            List<Livro> lista = serie.ToList();
+            ViewBag.Lista = lista;
+            if (serie != null)
             {
-                try
-                {
-                    MeuContexto contexto = new MeuContexto();
-                    List<Livro> busca = (from x in contexto.Livros
-                                         where x.Autor.Equals(opcao)
-                                         select x).ToList();
-                    if (busca.Count > 0)
-                    {
-                        return View();
-                    }
-                    else
-                    {
-                        return HttpNotFound();
-                    }
-                }
-                catch(Exception e)
-                {
-                    return View(e);
-                }                       
+                Session["lista"] = serie;
             }
 
-            if (value.EscolhaLivroID==2)
+            if (serie == null)
             {
-                try
-                {
-                    MeuContexto contexto = new MeuContexto();
-                    List<Livro>busca = (from x in contexto.Livros
-                                         where x.Nome.Equals(opcao)
-                                         select x).ToList();
-                   if (busca.Count > 0)
-                    {
-                        return View();
-                    }
-                    else
-                    {
-                        return HttpNotFound();
-                    }                    
-                    
-                }
-                catch(Exception e)
-                {
-                    return View(e);
-                }
-                
+                return ViewBag.Message = "Nada encontrado no sistema para " + nome;
             }
 
-            return (HttpNotFound());
+            return View();
         }
 
-        
-        
+        public ActionResult BuscaPorAutor()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BuscaPorAutor(string nome)
+        {
+            MeuContexto contexto = new MeuContexto();
+            var serie = contexto.Livros.Where(c => c.Autor.ToLower().Equals(nome.ToLower()));
+            List<Livro> lista = serie.ToList();
+            ViewBag.Lista = lista;
+            if (serie != null)
+            {
+                Session["lista"] = serie;
+            }
+
+            if (serie == null)
+            {
+                return ViewBag.Message = "Nada encontrado no sistema para " + nome;
+            }
+
+            return View();
+        }
+
     }
 }

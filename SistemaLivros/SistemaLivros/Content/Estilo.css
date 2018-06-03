@@ -4,13 +4,29 @@
     width: 100%;
 }
 
-#imagem{
-    
-}
-
 #busca {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
 }
 
+#posicaoProduto {
+    margin-right: 80%;
+    border-style: groove;
+    border-width: medium;
+    border-color: black;
+    text-align: center;
+    float:left
+}
+
+#imagens {
+    width: 200px;
+    height: 200px;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+#estante {
+    display: block;
+    margin: 0 auto;
+}
