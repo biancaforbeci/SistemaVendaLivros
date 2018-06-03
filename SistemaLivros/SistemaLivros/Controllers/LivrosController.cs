@@ -147,22 +147,14 @@ namespace SistemaLivros.Controllers
 
         public ActionResult Busca(object sender, EventArgs e)
         {
-            List<SelectListItem> items = new List<SelectListItem>();
-
-            items.Add(new SelectListItem { Text = "Nome do Autor", Value = "0" });
-
-            items.Add(new SelectListItem { Text = "Título", Value = "1" });
-
-            ViewBag.MovieType = items;
-
             return View();
         }
 
         [HttpPost]
-        public ActionResult Busca(int value,string opcao)
+        public ActionResult Busca(EscolhaLivro value, string opcao)
         {
-           
-            if (value == 0)
+            
+            if (value.EscolhaLivroID ==1 )
             {
                 try
                 {
@@ -170,13 +162,14 @@ namespace SistemaLivros.Controllers
                     List<Livro> busca = (from x in contexto.Livros
                                          where x.Autor.Equals(opcao)
                                          select x).ToList();
-                    if(busca.Count < 0)
+                    if (busca.Count > 0)
+                    {
+                        return View();
+                    }
+                    else
                     {
                         return HttpNotFound();
                     }
-
-
-                    return View(busca);
                 }
                 catch(Exception e)
                 {
@@ -184,21 +177,25 @@ namespace SistemaLivros.Controllers
                 }                       
             }
 
-            if (value == 1)
+            if (value.EscolhaLivroID==2)
             {
                 try
                 {
                     MeuContexto contexto = new MeuContexto();
-                    List<Livro> busca = (from x in contexto.Livros
+                    List<Livro>busca = (from x in contexto.Livros
                                          where x.Nome.Equals(opcao)
                                          select x).ToList();
-                    if (busca.Count < 0)
+                   if (busca.Count > 0)
+                    {
+                        return View();
+                    }
+                    else
                     {
                         return HttpNotFound();
-                    }
-
-                    return View(busca);
-                }catch(Exception e)
+                    }                    
+                    
+                }
+                catch(Exception e)
                 {
                     return View(e);
                 }
@@ -207,6 +204,8 @@ namespace SistemaLivros.Controllers
 
             return (HttpNotFound());
         }
+
+        
         
     }
 }

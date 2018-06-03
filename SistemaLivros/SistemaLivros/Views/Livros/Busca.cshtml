@@ -1,5 +1,5 @@
-﻿@model SistemaLivros.Models.Livro
-@model SistemaLivros.Models.EscolhaLivroViewModel
+﻿@model SistemaLivros.Models.EscolhaLivro
+
 
 @{
     ViewBag.Title = "Busca";
@@ -20,23 +20,21 @@
         <fieldset>
 
             <h4 style="text-align:center">
-                Buscar por @Html.DropDownListFor(modelItem => modelItem.EscolhaLivro, new SelectList(new List<Object>
+                Buscar por @Html.DropDownListFor(modelItem => modelItem.EscolhaLivroID, new SelectList(new List<Object>
 {
 new {value = 0, text = ""},
 new {value = 1, text = "Bradesco"},
 new {value = 2, text = "Santander"}
 }, "value", "text", 0)) @Html.TextBox("opcao") <input type="submit" value="Pesquisar" class="btn btn-default" />
 </h4>
-
-</fieldset>
-
-
-
-
-
-<div>
-    @Html.ActionLink("Voltar a página inicial", "Index", "Home")
-</div>
-
 }
+</fieldset>       
+
+
+
+        <div>
+            @Html.ActionLink("Voltar a página inicial", "Index", "Home")
+        </div>
+
+        }
 </body>

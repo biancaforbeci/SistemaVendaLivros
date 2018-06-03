@@ -5,8 +5,8 @@ using System.Web;
 
 namespace SistemaLivros.Models
 {
-    public class EscolhaLivroViewModel
+    public class EscolhaLivro
     {
-        public int EscolhaLivro { get; set; }
+        public int EscolhaLivroID { get; set; }       
     }
 }

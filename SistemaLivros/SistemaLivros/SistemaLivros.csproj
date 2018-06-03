@@ -184,7 +184,7 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\DAL\MeuContexto.cs" />
     <Compile Include="Models\Endereco.cs" />
-    <Compile Include="Models\EscolhaLivroViewModel.cs" />
+    <Compile Include="Models\EscolhaLivro.cs" />
     <Compile Include="Models\Livro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -251,6 +251,7 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Livros\ResultadoBuscaLivros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
