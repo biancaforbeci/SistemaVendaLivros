@@ -1,19 +1,14 @@
 ﻿@model SistemaLivros.Models.Cliente
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Details";
 }
 
-<h2 style="text-align:center"><b>Excluir Cliente</b></h2>
-<hr />
+<h2>Details</h2>
 
-<h3>Deseja excluir permanentemente esse cliente?</h3>
 <div>
-
-    @Html.HiddenFor(model => model.ClienteID)
-    @Html.HiddenFor(model => model.EnderecoID)
-    @Html.HiddenFor(model => model._Endereco.EnderecoID)
-
+    <h4>Cliente</h4>
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
@@ -54,16 +49,10 @@
         <dd>
             @Html.DisplayFor(model => model.Telefone)
         </dd>
-
+               
     </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Excluir" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "List")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClienteID }) |
+    @Html.ActionLink("Back to List", "List")
+</p>

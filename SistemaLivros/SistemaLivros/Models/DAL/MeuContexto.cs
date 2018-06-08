@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using static SistemaLivros.Models.DAL.MeuContexto;
 
 namespace SistemaLivros.Models.DAL
 {
     public class MeuContexto : DbContext
     {
-        public MeuContexto() : base("strConn")
+        public MeuContexto() : base("strConn") 
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<MeuContexto>());
         }
@@ -17,8 +19,8 @@ namespace SistemaLivros.Models.DAL
         public DbSet<Livro> Livros { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
-        public DbSet<LoginViewModel> Usuarios { get; set; }
-
+        
+                
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); }
 

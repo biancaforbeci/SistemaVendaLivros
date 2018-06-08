@@ -12,9 +12,9 @@ namespace SistemaLivros.Controllers
     {
         public ActionResult Index()
         {
-            MeuContexto contexto = new MeuContexto();
-            var serie = contexto.Livros.Take(5);
-            return View(serie.ToList());
+            //MeuContexto contexto = new MeuContexto();
+            //var serie = contexto.Livros.Take(5);
+            return View();
         }
 
         public ActionResult Visao()

@@ -20,15 +20,7 @@ namespace SistemaLivros.Controllers
         public ActionResult Index()
         {                      
             return View();
-        }
-
-        public void SalvaClienteLogin(Cliente cli)
-        {
-            MeuContexto contexto = new MeuContexto();
-            //AccountController.User.ClienteID = cli.ClienteID;
-            contexto.Entry(AccountController.User).State = System.Data.Entity.EntityState.Modified;
-            contexto.SaveChanges();
-        }
+        }        
 
         public ActionResult Create()
         {
@@ -67,9 +59,11 @@ namespace SistemaLivros.Controllers
                 try
                 {
                     MeuContexto contexto = new MeuContexto();
+                    //Endereco end=SalvarEndereco(cli);
+                    //cli.EnderecoID = end.EnderecoID;
                     contexto.Clientes.Add(cli);
                     contexto.SaveChanges();
-                    SalvaClienteLogin(cli);
+                    
                     return RedirectToAction("List");
                 }catch(Exception e)
                 {
@@ -78,14 +72,8 @@ namespace SistemaLivros.Controllers
             }
 
             return View(cli);
-        }
-       
-        public void EditUser()
-        {
-            MeuContexto contexto = new MeuContexto();
-            
-        }
-
+        }     
+        
         public ActionResult List()
         {
             MeuContexto contexto = new MeuContexto();
@@ -116,38 +104,34 @@ namespace SistemaLivros.Controllers
 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int? id)
+        public ActionResult EditPost(Cliente cli)
         {
-            
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
-            MeuContexto contexto = new MeuContexto();
-             var clienteToUpdate = contexto.Clientes.Find(id);
             if (ModelState.IsValid)
             {
-                 int endID = clienteToUpdate.EnderecoID;
-                var endToUpdate = contexto.Enderecos.Find(endID);
-                if (TryUpdateModel(clienteToUpdate, "", new string[] { "Nome", "CPF", "RG", "Email", "Telefone" }) &&
-                   TryUpdateModel(endToUpdate, "", new string[] { "_Endereco.Rua", "_Endereco.Numero", "_Endereco.Bairro", "_Endereco.CEP" }))
-                {
-                    try
-                    {
-                        contexto.SaveChanges();
+                MeuContexto contexto = new MeuContexto();
+                EditEndereco(cli);
+                contexto.Entry(cli).State =
+                    System.Data.Entity.EntityState.Modified;
 
-                        return RedirectToAction("List");
-                    }
-                    catch (RetryLimitExceededException /* dex */)
-                    {
-                        //Log the error (uncomment dex variable name and add a line here to write a log.
-                        ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                    }
-                }
+                contexto.SaveChanges();
+                return RedirectToAction("/List");
             }
-            
-            return View(clienteToUpdate);
+
+
+            return View(cli);
+        }
+
+        public void EditEndereco(Cliente cli)
+        {
+            MeuContexto contexto = new MeuContexto();
+            Endereco end = contexto.Enderecos.Where(c => c.EnderecoID.Equals(cli.EnderecoID)).FirstOrDefault();
+            end.Rua = cli._Endereco.Rua;
+            end.Numero = cli._Endereco.Numero;
+            end.Bairro = cli._Endereco.Bairro;
+            end.CEP = cli._Endereco.CEP;
+            contexto.Entry(end).State = System.Data.Entity.EntityState.Modified;
+            contexto.SaveChanges();
         }
 
 
@@ -172,18 +156,15 @@ namespace SistemaLivros.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             try
             {
                 MeuContexto contexto = new MeuContexto();
                 Cliente cli = contexto.Clientes.Find(id);
-                Endereco end = (from x in contexto.Enderecos
-                                   where x.EnderecoID.Equals(cli.EnderecoID)
-                                   select x).FirstOrDefault();
-                contexto.Enderecos.Remove(end);
-                contexto.Clientes.Remove(cli);                
+                contexto.Clientes.Remove(cli);
                 contexto.SaveChanges();
+                DeleteEndereco(cli);
                 return RedirectToAction("List");
             }
             catch (Exception e)
@@ -191,6 +172,32 @@ namespace SistemaLivros.Controllers
                 return View(e);
             }
             
+        }
+
+        public void DeleteEndereco(Cliente cli)
+        {
+            MeuContexto contexto = new MeuContexto();
+            Endereco serie = contexto.Enderecos.Where(c => c.EnderecoID.Equals(cli.EnderecoID)).FirstOrDefault();
+            contexto.Enderecos.Remove(serie);
+            contexto.SaveChanges();
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);  //retorna erro http diferente, requisição mau feita.
+            }
+
+            MeuContexto contexto = new MeuContexto();
+            Cliente cli = contexto.Clientes.Find(id);
+
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(cli);
         }
 
     }

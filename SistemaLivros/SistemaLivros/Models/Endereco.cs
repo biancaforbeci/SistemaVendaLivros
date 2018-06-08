@@ -10,7 +10,7 @@ namespace SistemaLivros.Models
     public class Endereco
     {
 
-        [Key, ForeignKey("_Cliente")]
+        [Key]
         public int EnderecoID { get; set; }
 
         [Required(ErrorMessage = "Informe a sua rua", AllowEmptyStrings = false)]
@@ -28,8 +28,7 @@ namespace SistemaLivros.Models
 
         [Required(ErrorMessage = "Informe o seu CEP", AllowEmptyStrings = false)]
         public int CEP { get; set; }
-
-        public virtual Cliente _Cliente { get; set; }
+              
        
 
     }

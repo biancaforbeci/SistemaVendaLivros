@@ -10,7 +10,7 @@ namespace SistemaLivros.Models
     public class Cliente
     {
 
-        [Key, ForeignKey("_Endereco")]
+        [Key]
         public int ClienteID { get; set; }
 
         [Required(ErrorMessage = "O nome do usuário é obrigatório", AllowEmptyStrings = false)]
@@ -30,9 +30,11 @@ namespace SistemaLivros.Models
         [Required(ErrorMessage = "Informe o seu Telefone", AllowEmptyStrings = false)]
         public string Telefone { get; set; }
 
+        [ForeignKey("_Endereco")]
+        public int EnderecoID { get; set; }
+
         public virtual Endereco _Endereco { get; set; }
 
-        public int EnderecoID { get; set; }
 
     }
 }
