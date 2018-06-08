@@ -199,6 +199,7 @@
     <Content Include="fonts\endereco-fiscal.png" />
     <Content Include="fonts\estante-de-livros.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\livraria.png" />
     <Content Include="fonts\volume-do-telefone_318-49639.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
