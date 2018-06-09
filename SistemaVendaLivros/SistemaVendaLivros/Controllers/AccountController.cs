@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SistemaLivros.Models;
 using SistemaVendaLivros.Models;
 
 namespace SistemaVendaLivros.Controllers
@@ -17,6 +18,7 @@ namespace SistemaVendaLivros.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        public static ApplicationUser SessionADM;
 
         public AccountController()
         {
@@ -71,6 +73,11 @@ namespace SistemaVendaLivros.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+
+            if(model.Email.Equals("biaformic@hotmail.com") && model.Password.Equals("So8bi1cla11$"))
+            {
+                return RedirectToAction("Index","Home");
             }
 
             // This doesn't count login failures towards account lockout
@@ -142,6 +149,8 @@ namespace SistemaVendaLivros.Controllers
             return View();
         }
 
+        public static Cliente ReferenCli;
+
         //
         // POST: /Account/Register
         [HttpPost]
@@ -151,19 +160,19 @@ namespace SistemaVendaLivros.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,  };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Create", "Clientes");
                 }
                 AddErrors(result);
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaVendaLivros.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,10 +24,6 @@ namespace SistemaLivros.Models
         [Required(ErrorMessage = "Informe o seu RG", AllowEmptyStrings = false)]
         public string RG { get; set; }
 
-        [Required(ErrorMessage = "Informe o seu email", AllowEmptyStrings = false)]
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido !")]
-        public string Email { get; set; }
-
         [Required(ErrorMessage = "Informe o seu Telefone", AllowEmptyStrings = false)]
         public string Telefone { get; set; }
 
@@ -35,6 +32,7 @@ namespace SistemaLivros.Models
 
         public virtual Endereco _Endereco { get; set; }
 
+        public string LoginID { get; set; }
 
     }
 }

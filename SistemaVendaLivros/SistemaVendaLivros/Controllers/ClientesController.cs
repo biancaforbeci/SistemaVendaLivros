@@ -1,4 +1,6 @@
-﻿using SistemaLivros.Models;
+﻿using Microsoft.AspNet.Identity;
+using SistemaLivros.Models;
+using SistemaVendaLivros.Controllers;
 using SistemaVendaLivros.Models;
 using System;
 using System.Collections.Generic;
@@ -59,10 +61,10 @@ namespace SistemaLivros.Controllers
                 try
                 {
                     MeuContexto contexto = new MeuContexto();
+                    cli.LoginID = User.Identity.GetUserId();
                     contexto.Clientes.Add(cli);
                     contexto.SaveChanges();
-
-                    return RedirectToAction("List");
+                    return RedirectToAction("Index", "Home");
                 }
                 catch (Exception e)
                 {
@@ -197,6 +199,17 @@ namespace SistemaLivros.Controllers
             }
 
             return View(cli);
+        }
+        
+        public ActionResult EditCliente()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                MeuContexto contexto = new MeuContexto();
+                Cliente cli = contexto.Clientes.Where(c => c.LoginID.Equals(User.Identity.GetUserId())).FirstOrDefault();
+                Edit(cli.ClienteID);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
     }
