@@ -25,27 +25,27 @@
 
     <br />
 
-    @*@foreach (Livro p in Model)
-
-    {
-
-        <div id="posicaoProduto">
-
-            <b> @Html.DisplayTextFor(b => p.Nome) </b>
-            <br />
-            <img src="~/fonts/@p.Foto" width="150" height="150" id="imagens" />
-            <br />
-            <b> @Html.DisplayNameFor(m => m.Preco) = R$ @Html.DisplayTextFor(b => p.Preco) </b>
-            <br />
-
-            <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Index", "Home")'" />
-            <br />
-        </div>
-    }*@
+    <div id="posicaoProdutoEsquerda">
+        <h5> <b>A Coisa - Stephen King</b></h5>
+        <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
+        <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+        <br />
+        <br />
+    </div>
 
     <br />
     <br />
-    <p> <a class="btn btn-primary btn-lg" @Html.ActionLink("Cadastre-se e compre já !!", "Create", "Clientes") &raquo;</a></p>
+
+    <div id="posicaoProdutoDireita">
+        <h5> <b>A Coisa - Stephen King</b></h5>
+        <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
+        <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+        <br />
+        <br />
+    </div>
+
+
+    @*<p> <a class="btn btn-primary btn-lg" @Html.ActionLink("Cadastre-se e compre já !!", "Create", "Clientes") &raquo;</a></p>*@
 
     <div class="row">
         <div class="col-md-4">

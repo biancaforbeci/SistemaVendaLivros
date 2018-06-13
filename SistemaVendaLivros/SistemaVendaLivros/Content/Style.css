@@ -10,13 +10,22 @@
     vertical-align: middle;
 }
 
-#posicaoProduto {
+#posicaoProdutoEsquerda {
     margin-right: 80%;
     border-style: groove;
     border-width: medium;
     border-color: black;
     text-align: center;
     float: left
+}
+
+#posicaoProdutoDireita {
+    margin-right: 80%;
+    border-style: groove;
+    border-width: medium;
+    border-color: black;
+    text-align: center;
+    margin:auto
 }
 
 #imagens {

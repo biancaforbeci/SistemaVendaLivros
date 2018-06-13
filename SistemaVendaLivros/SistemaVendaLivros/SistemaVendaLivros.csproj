@@ -213,9 +213,14 @@
     <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\atenção.png" />
+    <Content Include="fonts\cury.jpg" />
+    <Content Include="fonts\dom casmurro.jpg" />
     <Content Include="fonts\endereco-fiscal.png" />
     <Content Include="fonts\estante-de-livros.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\guardiao.jpg" />
+    <Content Include="fonts\it.jpg" />
+    <Content Include="fonts\ken follett.jpg" />
     <Content Include="fonts\volume-do-telefone_318-49639.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
