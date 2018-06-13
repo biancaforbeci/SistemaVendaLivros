@@ -1,0 +1,106 @@
+﻿@using SistemaLivros.Models
+
+
+@{
+    ViewBag.Title = "Busca";
+}
+
+<head>
+
+    <link href="~/Content/Estilo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<h2 style="text-align:center"><b>Buscar Livros</b></h2>
+
+<body id="body">
+    @using (Html.BeginForm("BuscaPorNome", "Livros", FormMethod.Post))
+    {
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Consulta pelo título do livro</h4>
+            <hr />
+            <div class="form-group">
+                @Html.Label("Título:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="nome" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+
+        if (Session["lista"] != null)
+        {
+            <table class="table">
+                <tr>
+                    <th>
+                        <h5 style="text-align:center">Capa</h5>
+                    </th>
+                    <th>
+                        <h5>Título</h5>
+                    </th>
+                    <th>
+                        <h5>Editora</h5>
+                    </th>
+                    <th>
+                        <h5>Quantidade Disponível</h5>
+                    </th>
+                    <th>
+                        <h5>Preço</h5>
+                    </th>
+                    <th>
+                        <p><h5 style="color:blueviolet"><b>@Html.Label("COMPRE ABAIXO")</b></h5></p>
+                    </th>
+                </tr>
+
+                @foreach (Livro item in ViewBag.Lista)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/fonts/@item.Foto" width="150" height="150" />
+                        </td>
+                        <td>
+                            <h5> @item.Nome</h5>
+                        </td>
+                        <td>
+                            <h5>  @item.Editora</h5>
+                        </td>
+                        <td>
+                            <h5>  @item.Qtd</h5>
+                        </td>
+                        <td style="color:red">
+                            <h5>R$ @item.Preco</h5>
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Index", "Home")'" />
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.LivroID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.LivroID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.LivroID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        }
+        else
+        {
+            <h4>@ViewBag.Message</h4>
+        }
+
+
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    }
+</body>

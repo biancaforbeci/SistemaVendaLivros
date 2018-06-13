@@ -1,0 +1,102 @@
+﻿@model SistemaLivros.Models.Livro
+
+@{
+    ViewBag.Title = "Details";
+    var ImagePath = Model.Foto;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Livro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.HiddenFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            <img src="~/fonts/@ImagePath" width="150" height="150" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Autor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Autor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroPaginas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroPaginas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qtd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qtd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Edicao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Edicao)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayFor(model => model.AnoEdicao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnoEdicao)
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LivroID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
