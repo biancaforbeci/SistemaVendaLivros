@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarrinhoController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivrosController.cs" />
@@ -290,6 +291,7 @@
     <Content Include="Views\Livros\Details.cshtml" />
     <Content Include="Views\Livros\Index.cshtml" />
     <Content Include="Views\Clientes\Details.cshtml" />
+    <Content Include="Views\Carrinho\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

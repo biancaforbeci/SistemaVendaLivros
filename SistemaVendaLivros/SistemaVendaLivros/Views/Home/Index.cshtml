@@ -24,29 +24,57 @@
     <br />
 
     <br />
+    <div class="group">
+        <div id="posicaoProdutoEsquerda">
+            <h5> <b>A Coisa - Stephen King</b></h5>
+            <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+            <br />
+            <br />
+        </div>
 
-    <div id="posicaoProdutoEsquerda">
-        <h5> <b>A Coisa - Stephen King</b></h5>
-        <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
-        <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
-        <br />
-        <br />
+        <div id="posicaoProdutoCentro">
+            <h5> <b>A Coisa - Stephen King</b></h5>
+            <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+        </div>
+
+
+        <div id="posicaoProdutoDireita">
+            <h5> <b>A Coisa - Stephen King</b></h5>
+            <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+        </div>
     </div>
 
-    <br />
-    <br />
-
-    <div id="posicaoProdutoDireita">
-        <h5> <b>A Coisa - Stephen King</b></h5>
-        <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
-        <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
-        <br />
-        <br />
-    </div>
-
-
+    
     @*<p> <a class="btn btn-primary btn-lg" @Html.ActionLink("Cadastre-se e compre já !!", "Create", "Clientes") &raquo;</a></p>*@
 
+    <br />
+    <br />
+    <br />
+    <br />
     <div class="row">
         <div class="col-md-4">
             <h2>Missão</h2>
