@@ -222,6 +222,7 @@
     <Content Include="fonts\guardiao.jpg" />
     <Content Include="fonts\it.jpg" />
     <Content Include="fonts\ken follett.jpg" />
+    <Content Include="fonts\livraria.png" />
     <Content Include="fonts\volume-do-telefone_318-49639.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
