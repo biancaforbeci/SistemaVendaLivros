@@ -23,11 +23,10 @@
 
     <br />
 
-    <br />
-    <div class="group">
-        <div id="posicaoProdutoEsquerda">
-            <h5> <b>A Coisa - Stephen King</b></h5>
-            <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
+    <div id="divbody">
+        <div id="divesquerda">
+            <h4> <b>O Guardião - Nicholas Sparks</b></h4>
+            <img src="~/fonts/guardiao.jpg" width="150" height="150" id="imagens" />
             @if (Request.IsAuthenticated)
             {
                 <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
@@ -40,8 +39,8 @@
             <br />
         </div>
 
-        <div id="posicaoProdutoCentro">
-            <h5> <b>A Coisa - Stephen King</b></h5>
+        <div id="divcentro">
+            <h4> <b>A Coisa - Stephen King</b></h4>
             <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
             @if (Request.IsAuthenticated)
             {
@@ -54,9 +53,9 @@
         </div>
 
 
-        <div id="posicaoProdutoDireita">
-            <h5> <b>A Coisa - Stephen King</b></h5>
-            <img src="~/fonts/it.jpg" width="150" height="150" id="imagens" />
+        <div id="divdireita">
+            <h4> <b>As Espiãs do Dia D - Ken Follett</b></h4>
+            <img src="~/fonts/ken follett.jpg" width="150" height="150" id="imagens" />
             @if (Request.IsAuthenticated)
             {
                 <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
@@ -68,7 +67,95 @@
         </div>
     </div>
 
-    
+    <div id="divbody2">
+        <div id="divesquerda">
+            <h4> <b>Dom Casmurro - Machado de Assis</b></h4>
+            <img src="~/fonts/dom casmurro.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+            <br />
+            <br />
+        </div>
+
+        <div id="divcentro">
+            <h4> <b>Felicidade Clandestina - Clarice Lispector</b></h4>
+            <img src="~/fonts/felicidade.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+        </div>
+
+
+        <div id="divdireita">
+            <h4> <b>Uma Breve História do Tempo - Stephen Hawking</b></h4>
+            <img src="~/fonts/stephenHawking.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+        </div>
+    </div>
+
+    <div id="divbody2">
+        <div id="divesquerda">
+            <h4> <b>Em Busca do Sentido da Vida - Augusto Cury</b></h4>
+            <img src="~/fonts/augustocury.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+            <br />
+            <br />
+        </div>
+
+        <div id="divcentro">
+            <h4> <b> Android Essencial - Ricardo R. Lecheta</b></h4>
+            <img src="~/fonts/android.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+        </div>
+
+
+        <div id="divdireita">
+            <h4> <b>Teoria Geral da Administração - Idalberto Chiavenato</b></h4>
+            <img src="~/fonts/tga.jpg" width="150" height="150" id="imagens" />
+            @if (Request.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
+            }
+            else
+            {
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Login", "Account")'" />
+            }
+        </div>
+    </div>
+
+
     @*<p> <a class="btn btn-primary btn-lg" @Html.ActionLink("Cadastre-se e compre já !!", "Create", "Clientes") &raquo;</a></p>*@
 
     <br />
