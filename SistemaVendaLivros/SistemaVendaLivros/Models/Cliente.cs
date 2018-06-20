@@ -35,6 +35,7 @@ namespace SistemaLivros.Models
 
         public virtual Endereco _Endereco { get; set; }
 
+        public string LoginID { get; set; }
 
     }
 }

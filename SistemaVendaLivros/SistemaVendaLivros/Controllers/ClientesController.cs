@@ -1,4 +1,5 @@
-﻿using SistemaLivros.Models;
+﻿using Microsoft.AspNet.Identity;
+using SistemaLivros.Models;
 using SistemaVendaLivros.Models;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,7 @@ namespace SistemaLivros.Controllers
                 try
                 {
                     MeuContexto contexto = new MeuContexto();
+                    cli.LoginID = User.Identity.GetUserId();
                     contexto.Clientes.Add(cli);
                     contexto.SaveChanges();
 

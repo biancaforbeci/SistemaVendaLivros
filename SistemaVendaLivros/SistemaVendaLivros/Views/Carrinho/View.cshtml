@@ -3,8 +3,16 @@
     ViewBag.Title = "Compra Realizada com sucesso";
 }
 
-<h2>View</h2>
+@if (Session["Cliente"] != null)
+{
+    <h2>@ViewBag.Title</h2>
 
-<div>
-   @*// @Html.ActionLink("Back to List", "List")*@ 
-</div>
+}
+else
+{
+    <h2>@ViewBag.Mensagem</h2>
+
+    <div>
+        @Html.ActionLink("Cadastrar Cliente", "Create", "Clientes")
+    </div>
+}

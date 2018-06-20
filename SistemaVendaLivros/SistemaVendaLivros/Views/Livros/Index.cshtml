@@ -5,10 +5,10 @@
 
 }
 
-<h2>Index</h2>
+<h2 style="text-align:center; color:purple">Livros Disponíveis</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Login","Account")
 </p>
 <table class="table">
     <tr>
@@ -51,7 +51,7 @@
                 <h5> @Html.DisplayFor(modelItem => item.Preco)</h5>
             </td>
             <td>
-                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Index", "Home")'" />
+                <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho")'" />
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.LivroID }) |

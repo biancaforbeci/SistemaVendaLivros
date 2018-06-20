@@ -26,6 +26,9 @@ namespace SistemaVendaLivros.Models
         public DbSet<Livro> Livros { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Carrinho> Carrinho { get; set; }
+
+        
 
         public MeuContexto():base("DefaultConnection", throwIfV1Schema: false)
         {
