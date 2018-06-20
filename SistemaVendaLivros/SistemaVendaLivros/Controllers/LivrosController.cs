@@ -22,6 +22,7 @@ namespace SistemaLivros.Controllers
             return View(lista);
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();

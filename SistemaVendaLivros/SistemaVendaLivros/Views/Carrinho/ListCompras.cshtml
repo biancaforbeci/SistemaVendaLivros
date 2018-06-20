@@ -4,18 +4,19 @@
     ViewBag.Title = "ListCompras";
 }
 
-<h2>ListCompras</h2>
+<h2 style="text-align:center; color:purple">Lista de Livros Comprados</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model._Livro.Nome
+            @Html.DisplayNameFor(model => model._Livro.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClienteID)
+            @Html.DisplayNameFor(model => model._Livro.Preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._Cliente.Nome)
         </th>
         <th></th>
     </tr>
@@ -26,12 +27,13 @@
             @Html.DisplayFor(modelItem => item._Livro.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ClienteID)
+            @Html.DisplayFor(modelItem => item._Livro.Preco)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CarrinhoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CarrinhoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CarrinhoID })
+            @Html.DisplayFor(modelItem => item._Cliente.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.CarrinhoID })             
         </td>
     </tr>
 }

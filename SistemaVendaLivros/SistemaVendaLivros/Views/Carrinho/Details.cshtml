@@ -1,0 +1,49 @@
+﻿@model SistemaVendaLivros.Models.Carrinho
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4 style="text-align:center; color:purple">Detalhe da Compra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Cliente")
+        </dt>
+
+        <dd>
+            <h4>@Html.DisplayFor(model => model._Cliente.Nome)</h4>
+        </dd>
+
+        <dt>
+            @Html.Label("Livro")
+        </dt>
+
+        <dd>
+            <h4>@Html.DisplayFor(model => model._Livro.Nome)</h4>
+        </dd>
+
+        <dt>
+            @Html.Label("Preço")
+        </dt>
+
+        <dd>
+            <h4>R$ @Html.DisplayFor(model => model._Livro.Preco)</h4>
+        </dd>
+
+        <dt>
+            @Html.Label("Número de Páginas")
+        </dt>
+
+        <dd>
+            <h4>R$ @Html.DisplayFor(model => model._Livro.NumeroPaginas)</h4>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "ListCompras")    
+</p>

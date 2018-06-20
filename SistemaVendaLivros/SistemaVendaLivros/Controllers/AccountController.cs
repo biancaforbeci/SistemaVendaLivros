@@ -59,7 +59,7 @@ namespace SistemaVendaLivros.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -75,13 +75,7 @@ namespace SistemaVendaLivros.Controllers
                 return View(model);
             }
 
-            if(model.Email.Equals("biaformic@hotmail.com") && model.Password.Equals("123"))
-            {
-                Session["ADM"] = true;
-                return RedirectToLocal(returnUrl);
-            }
-
-            // This doesn't count login failures towards account lockout
+             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)

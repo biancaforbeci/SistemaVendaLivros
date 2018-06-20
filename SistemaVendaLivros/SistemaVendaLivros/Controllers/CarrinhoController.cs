@@ -46,7 +46,7 @@ namespace SistemaVendaLivros.Controllers
 
             if(cli != null)
             {
-               List<Carrinho> lista = contexto.Carrinho.Where(c => c.ClienteID.Equals(cli.ClienteID)).ToList();
+                List<Carrinho> lista = contexto.Carrinho.Include("_Livro").Include("_Cliente").Where(c => c.ClienteID.Equals(cli.ClienteID)).ToList();
                Session["Cliente"] = cli;
                return View(lista);
             }
@@ -56,6 +56,12 @@ namespace SistemaVendaLivros.Controllers
                 Session["Cliente"] = null;
             }
 
+
+            return View();
+        }
+
+        public ActionResult Details()
+        {
 
             return View();
         }
