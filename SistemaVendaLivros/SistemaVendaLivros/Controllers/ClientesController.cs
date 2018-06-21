@@ -60,7 +60,14 @@ namespace SistemaLivros.Controllers
                 try
                 {
                     MeuContexto contexto = new MeuContexto();
-                    cli.LoginID = User.Identity.GetUserId();
+                    if(ProcuraLogin(User.Identity.GetUserId()) == null)
+                    {
+                        cli.LoginID = User.Identity.GetUserId();
+                    }
+                    else
+                    {
+
+                    }                    
                     contexto.Clientes.Add(cli);
                     contexto.SaveChanges();
 
@@ -75,6 +82,14 @@ namespace SistemaLivros.Controllers
             return View(cli);
         }
 
+        public Cliente ProcuraLogin(string login)
+        {
+            MeuContexto contexto = new MeuContexto();
+            Cliente cli = contexto.Clientes.Where(c => c.LoginID.Equals(login)).FirstOrDefault();
+            return cli;
+        }
+
+        [Authorize]
         public ActionResult List()
         {
             MeuContexto contexto = new MeuContexto();
@@ -198,6 +213,20 @@ namespace SistemaLivros.Controllers
                 return HttpNotFound();
             }
 
+            return View(cli);
+        }
+
+        public ActionResult EditLogin()
+        {
+            MeuContexto contexto = new MeuContexto();
+            string login = User.Identity.GetUserId();
+            Cliente cli = contexto.Clientes.Where(c => c.LoginID.Equals(login)).FirstOrDefault();
+            if(cli == null)
+            {
+                ViewBag.Mensagem = "Cliente não cadastrado";
+                Session["Cliente"] = null;
+                return RedirectToAction("ListCompras","Carrinho");
+            }
             return View(cli);
         }
 

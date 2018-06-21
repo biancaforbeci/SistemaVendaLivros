@@ -17,6 +17,10 @@ namespace SistemaVendaLivros.Controllers
             MeuContexto contexto = new MeuContexto();
             Livro livro = contexto.Livros.Find(id);
             string login = User.Identity.GetUserId().ToString();
+            if(login == null)
+            {
+                return RedirectToAction("Register","Account");
+            }
             Cliente cli = contexto.Clientes.Where(c => c.LoginID.Equals(login)).FirstOrDefault();
 
             if(cli != null)

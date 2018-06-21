@@ -80,7 +80,7 @@
                             <h5>R$ @item.Preco</h5>
                         </td>
                         <td>
-                            <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("Index", "Home")'" />
+                            <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho", new { id = item.LivroID })'" />
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.LivroID }) |

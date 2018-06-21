@@ -50,7 +50,7 @@ namespace SistemaLivros.Controllers
             return View(livro);
         }
 
-
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -87,6 +87,7 @@ namespace SistemaLivros.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
