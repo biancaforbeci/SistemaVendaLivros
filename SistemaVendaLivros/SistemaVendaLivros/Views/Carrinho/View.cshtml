@@ -3,6 +3,10 @@
     ViewBag.Title = "Compra Realizada com sucesso";
 }
 
+<head>
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+</head>
+
 @if (Session["Cliente"] != null)
 {
     <h2>@ViewBag.Title</h2>
@@ -10,8 +14,13 @@
 }
 else
 {
-    <h2>@ViewBag.Mensagem</h2>
+    <br />
+    <br />
+    <img src="~/fonts/warning.png" id="estante" width="150" height="150"/>
 
+    <h2 style="text-align:center"><b>@ViewBag.Mensagem</b></h2>
+
+    <h4><b>Cadastre um novo cliente clicando abaixo</b></h4>
     <div>
         @Html.ActionLink("Cadastrar Cliente", "Create", "Clientes")
     </div>

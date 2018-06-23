@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DecimalModelBinder.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -230,6 +231,7 @@
     <Content Include="fonts\tga.jpg" />
     <Content Include="fonts\valores.png" />
     <Content Include="fonts\volume-do-telefone_318-49639.jpg" />
+    <Content Include="fonts\warning.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -302,6 +304,7 @@
     <Content Include="Views\Carrinho\ListCompras.cshtml" />
     <Content Include="Views\Carrinho\Details.cshtml" />
     <Content Include="Views\Clientes\EditLogin.cshtml" />
+    <Content Include="Views\Clientes\LoginCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

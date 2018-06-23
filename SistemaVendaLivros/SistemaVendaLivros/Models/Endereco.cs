@@ -14,7 +14,6 @@ namespace SistemaLivros.Models
         public int EnderecoID { get; set; }
 
         [Required(ErrorMessage = "Informe a sua rua", AllowEmptyStrings = false)]
-        [RegularExpression(@"([a-zA-Z\d]+[\w\d]*|)[a-zA-Z]+[\w\d.]*", ErrorMessage = "Informe uma rua válida !")]
         public string Rua { get; set; }
 
         [Required(ErrorMessage = "Informe o seu número", AllowEmptyStrings = false)]
@@ -22,7 +21,6 @@ namespace SistemaLivros.Models
 
 
         [Required(ErrorMessage = "Informe o seu bairro", AllowEmptyStrings = false)]
-        [RegularExpression(@"([a-zA-Z\d]+[\w\d]*|)[a-zA-Z]+[\w\d.]*", ErrorMessage = "Informe um bairro válido !")]
         public string Bairro { get; set; }
 
 

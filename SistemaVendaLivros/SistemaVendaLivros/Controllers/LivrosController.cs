@@ -2,8 +2,10 @@
 using SistemaVendaLivros.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -32,6 +34,7 @@ namespace SistemaLivros.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Livro livro, HttpPostedFileBase file)
         {
+           
 
             if (ModelState.IsValid)
             {
@@ -39,7 +42,7 @@ namespace SistemaLivros.Controllers
                 {
                     file.SaveAs(HttpContext.Server.MapPath("~/fonts/")
                            + file.FileName);
-                    livro.Foto = file.FileName;
+                    livro.Foto = file.FileName;                   
                     MeuContexto contexto = new MeuContexto();
                     contexto.Livros.Add(livro);
                     contexto.SaveChanges();
@@ -49,6 +52,8 @@ namespace SistemaLivros.Controllers
 
             return View(livro);
         }
+
+        
 
         [Authorize]
         public ActionResult Delete(int? id)
@@ -159,14 +164,13 @@ namespace SistemaLivros.Controllers
             var serie = contexto.Livros.Where(c => c.Nome.ToLower().Equals(nome.ToLower()));
             List<Livro> lista = serie.ToList();
             ViewBag.Lista = lista;
-            if (serie != null)
+            if (lista.Count > 0)
             {
                 Session["lista"] = serie;
-            }
-
-            if (serie == null)
+            }else
             {
-                return ViewBag.Message = "Nada encontrado no sistema para " + nome;
+                Session["lista"] = null;
+                ViewBag.Message = "Nada encontrado no sistema para : " + nome;
             }
 
             return View();
@@ -184,14 +188,13 @@ namespace SistemaLivros.Controllers
             var serie = contexto.Livros.Where(c => c.Autor.ToLower().Equals(nome.ToLower()));
             List<Livro> lista = serie.ToList();
             ViewBag.Lista = lista;
-            if (serie != null)
+            if (lista.Count > 0)
             {
                 Session["lista"] = serie;
-            }
-
-            if (serie == null)
+            }else
             {
-                return ViewBag.Message = "Nada encontrado no sistema para " + nome;
+                Session["lista"] = null;
+                ViewBag.Message = "Nada encontrado no sistema para : " + nome ;
             }
 
             return View();

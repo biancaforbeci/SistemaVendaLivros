@@ -1,6 +1,6 @@
-﻿@model SistemaVendaLivros.Models.Carrinho
+﻿@model IEnumerable<SistemaVendaLivros.Models.Carrinho>
 
-@{
+@{ 
     ViewBag.Title = "Details";
 }
 
@@ -10,12 +10,23 @@
     <h4 style="text-align:center; color:purple">Detalhe da Compra</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        @foreach (var item in Model)
+        {
         <dt>
-            @Html.Label("Cliente")
+            @Html.Label("Nome do Cliente")
         </dt>
 
         <dd>
-            <h4>@Html.DisplayFor(model => model._Cliente.Nome)</h4>
+            <h7>@Html.DisplayFor(modelItem => item._Cliente.Nome)</h7>
+        </dd>
+
+        <dt>
+            @Html.Label("Dia e Hora da Compra")
+        </dt>
+
+        <dd>
+            <h7>@Html.DisplayFor(modelItem => item.DiaCompra)</h7>
         </dd>
 
         <dt>
@@ -23,7 +34,7 @@
         </dt>
 
         <dd>
-            <h4>@Html.DisplayFor(model => model._Livro.Nome)</h4>
+            <h7>@Html.DisplayFor(modelItem => item._Livro.Nome)</h7>
         </dd>
 
         <dt>
@@ -31,7 +42,7 @@
         </dt>
 
         <dd>
-            <h4>R$ @Html.DisplayFor(model => model._Livro.Preco)</h4>
+            <h7>R$ @Html.DisplayFor(modelItem => item._Livro.Preco)</h7>
         </dd>
 
         <dt>
@@ -39,11 +50,11 @@
         </dt>
 
         <dd>
-            <h4>R$ @Html.DisplayFor(model => model._Livro.NumeroPaginas)</h4>
+            @Html.DisplayFor(modelItem => item._Livro.NumeroPaginas)
         </dd>
-
+        }
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "ListCompras")    
+    @Html.ActionLink("Back to List", "ListCompras")
 </p>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Resources;
 using System.Web;
 
 namespace SistemaLivros.Models
@@ -22,12 +23,16 @@ namespace SistemaLivros.Models
         [Required(ErrorMessage = "Digite uma quantidade", AllowEmptyStrings = false)]
         public int Qtd { get; set; }
 
+        
+        [Required(ErrorMessage = "Digite um preço", AllowEmptyStrings = false)]
         [Display(Name = "Preço")]
-        public Decimal Preco { get; set; }
+        public decimal Preco { get; set; }
 
         [Display(Name = "Capa do Livro")]
         public string Foto { get; set; }
 
+
+        [Required(ErrorMessage = "Digite uma editora", AllowEmptyStrings = false)]
         public string Editora { get; set; }
 
         [Display(Name = "Edição")]
@@ -36,6 +41,7 @@ namespace SistemaLivros.Models
         [Display(Name = "Ano de Edição")]
         public int AnoEdicao { get; set; }
 
+        [Required(ErrorMessage = "Digite um autor", AllowEmptyStrings = false)]
         public string Autor { get; set; }
 
         [Display(Name = "Quantidade de Páginas")]

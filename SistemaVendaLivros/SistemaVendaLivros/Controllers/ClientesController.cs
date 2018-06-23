@@ -64,10 +64,10 @@ namespace SistemaLivros.Controllers
                     {
                         cli.LoginID = User.Identity.GetUserId();
                     }
-                    else
-                    {
-
-                    }                    
+                    else{
+                        return RedirectToAction("LoginCliente");
+                    }
+                                        
                     contexto.Clientes.Add(cli);
                     contexto.SaveChanges();
 
@@ -108,7 +108,7 @@ namespace SistemaLivros.Controllers
             MeuContexto contexto = new MeuContexto();
             Cliente cli = contexto.Clientes.Find(id);
 
-            if (id == null)
+            if (cli == null)
             {
                 return HttpNotFound();
             }
@@ -122,6 +122,20 @@ namespace SistemaLivros.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPost(Cliente cli)
         {
+            string tel = "^(?:(?([0-9]{2}))?[-. ]?)?([0-9]{4})[-. ]?([0-9]{4})$";
+            string verifica = "^[0-9]";
+
+            if (!Regex.IsMatch(cli.RG, verifica))
+            {
+                ModelState.AddModelError("RG", "Digite apenas números");
+                return View(cli);
+            }
+
+            if (Regex.IsMatch(cli.Telefone, tel) == false)
+            {
+                ModelState.AddModelError("Telefone", "Formatado de telefone inválido. Digite como o exemplo: 3245-5698");
+                return View(cli);
+            }
 
             if (ModelState.IsValid)
             {
@@ -130,11 +144,9 @@ namespace SistemaLivros.Controllers
                 contexto.Entry(cli).State =
                     System.Data.Entity.EntityState.Modified;
                 contexto.SaveChanges();
-                EditEndereco(cli);
-                return RedirectToAction("/List");
+                EditEndereco(cli);            
+
             }
-
-
             return View(cli);
         }
 
@@ -161,7 +173,7 @@ namespace SistemaLivros.Controllers
             MeuContexto contexto = new MeuContexto();
             Cliente cli = contexto.Clientes.Find(id);
 
-            if (id == null)
+            if (cli == null)
             {
                 return HttpNotFound();
             }
@@ -208,7 +220,7 @@ namespace SistemaLivros.Controllers
             MeuContexto contexto = new MeuContexto();
             Cliente cli = contexto.Clientes.Find(id);
 
-            if (id == null)
+            if (cli == null)
             {
                 return HttpNotFound();
             }
@@ -228,6 +240,39 @@ namespace SistemaLivros.Controllers
                 return RedirectToAction("ListCompras","Carrinho");
             }
             return View(cli);
+        }
+
+        [HttpPost, ActionName("EditLogin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditLoginPost(Cliente cli)
+        {
+            if (ModelState.IsValid)
+            {
+                MeuContexto contexto = new MeuContexto();
+                EditEndereco(cli);
+                contexto.Entry(cli).State = System.Data.Entity.EntityState.Modified;
+                contexto.SaveChanges();
+               
+                return RedirectToAction("Index", "Home");
+            }
+            return View(cli);
+        }
+
+        public void EditEnderecoLogin(Cliente cli)
+        {
+            MeuContexto contexto = new MeuContexto();
+            Endereco end = contexto.Enderecos.Where(c => c.EnderecoID.Equals(cli.EnderecoID)).FirstOrDefault();
+            end.Rua = cli._Endereco.Rua;
+            end.Numero = cli._Endereco.Numero;
+            end.Bairro = cli._Endereco.Bairro;
+            end.CEP = cli._Endereco.CEP;
+            contexto.Entry(end).State = System.Data.Entity.EntityState.Modified;
+            contexto.SaveChanges();
+        }
+
+        public ActionResult LoginCliente()
+        {
+            return View();
         }
 
     }
