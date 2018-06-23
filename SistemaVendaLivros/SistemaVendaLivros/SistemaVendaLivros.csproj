@@ -226,6 +226,7 @@
     <Content Include="fonts\it.jpg" />
     <Content Include="fonts\ken follett.jpg" />
     <Content Include="fonts\livraria.png" />
+    <Content Include="fonts\proibido.jpg" />
     <Content Include="fonts\stephenHawking.jpg" />
     <Content Include="fonts\tga.jpg" />
     <Content Include="fonts\valores.png" />
@@ -295,7 +296,6 @@
     <Content Include="Views\Livros\BuscaPorAutor.cshtml" />
     <Content Include="Views\Livros\BuscaPorNome.cshtml" />
     <Content Include="Views\Livros\Create.cshtml" />
-    <Content Include="Views\Livros\Edit.cshtml" />
     <Content Include="Views\Livros\Delete.cshtml" />
     <Content Include="Views\Livros\Details.cshtml" />
     <Content Include="Views\Livros\Index.cshtml" />
@@ -305,6 +305,8 @@
     <Content Include="Views\Carrinho\Details.cshtml" />
     <Content Include="Views\Clientes\EditLogin.cshtml" />
     <Content Include="Views\Clientes\LoginCliente.cshtml" />
+    <Content Include="Views\Clientes\ProibidoEdicao.cshtml" />
+    <Content Include="Views\Livros\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -48,7 +48,7 @@
                 <h5>  @Html.DisplayFor(modelItem => item.Qtd)</h5>
             </td>
             <td style="color:red">
-                <h5> @Html.DisplayFor(modelItem => item.Preco)</h5>
+                <h5>R$ @Html.DisplayFor(modelItem => item.Preco)</h5>
             </td>
             <td>
                 <input type="button" class="btn btn-info" value="COMPRE" onclick="location.href='@Url.Action("View", "Carrinho", new { id = item.LivroID })'" />

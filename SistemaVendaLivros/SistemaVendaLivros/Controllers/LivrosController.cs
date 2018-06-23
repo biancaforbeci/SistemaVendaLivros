@@ -48,6 +48,10 @@ namespace SistemaLivros.Controllers
                     contexto.SaveChanges();
                     return RedirectToAction("Index");
                 }
+                else
+                {
+                    ModelState.AddModelError("Foto", "Adicione algum arquivo de foto");
+                }
             }
 
             return View(livro);
@@ -125,12 +129,14 @@ namespace SistemaLivros.Controllers
                            + file.FileName);
 
                     livro.Foto = file.FileName;
-                    MeuContexto contexto = new MeuContexto();
-                    contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
-                    contexto.SaveChanges();
-                    return RedirectToAction("Index");
                 }
+
+                MeuContexto contexto = new MeuContexto();
+                contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
+                contexto.SaveChanges();
+                return RedirectToAction("Index");
             }
+        
             return View(livro);
         }
 
@@ -154,6 +160,7 @@ namespace SistemaLivros.Controllers
 
         public ActionResult BuscaPorNome()
         {
+            Session["lista"] = null;
             return View();
         }
 
@@ -178,6 +185,7 @@ namespace SistemaLivros.Controllers
 
         public ActionResult BuscaPorAutor()
         {
+            Session["lista"] = null;
             return View();
         }
 

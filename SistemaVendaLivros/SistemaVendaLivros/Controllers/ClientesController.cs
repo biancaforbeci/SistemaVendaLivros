@@ -140,12 +140,22 @@ namespace SistemaLivros.Controllers
             if (ModelState.IsValid)
             {
                 MeuContexto contexto = new MeuContexto();
-                EditEndereco(cli);
+                Cliente cliLogin =ProcuraLogin(User.Identity.GetUserId());
+
+                if ((cliLogin != null) && (cliLogin.ClienteID.Equals(cli.ClienteID) == true) )
+                {
+                    EditEndereco(cli);
+                    cli.LoginID = User.Identity.GetUserId();
+                }
+                else
+                {
+                    return RedirectToAction("ProibidoEdicao");
+                }
+
                 contexto.Entry(cli).State =
                     System.Data.Entity.EntityState.Modified;
                 contexto.SaveChanges();
-                EditEndereco(cli);            
-
+                return RedirectToAction("List");
             }
             return View(cli);
         }
@@ -160,6 +170,11 @@ namespace SistemaLivros.Controllers
             end.CEP = cli._Endereco.CEP;
             contexto.Entry(end).State = System.Data.Entity.EntityState.Modified;
             contexto.SaveChanges();
+        }
+
+        public ActionResult ProibidoEdicao()
+        {
+            return View();
         }
 
 
@@ -250,6 +265,7 @@ namespace SistemaLivros.Controllers
             {
                 MeuContexto contexto = new MeuContexto();
                 EditEndereco(cli);
+                cli.LoginID = User.Identity.GetUserId();
                 contexto.Entry(cli).State = System.Data.Entity.EntityState.Modified;
                 contexto.SaveChanges();
                

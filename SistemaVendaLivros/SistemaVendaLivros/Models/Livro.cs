@@ -36,15 +36,18 @@ namespace SistemaLivros.Models
         public string Editora { get; set; }
 
         [Display(Name = "Edição")]
+        [Required(ErrorMessage = "Faltou o campo edição", AllowEmptyStrings = false)]
         public int Edicao { get; set; }
 
         [Display(Name = "Ano de Edição")]
+        [Required(ErrorMessage = "Digite um ano de edição", AllowEmptyStrings = false)]
         public int AnoEdicao { get; set; }
 
         [Required(ErrorMessage = "Digite um autor", AllowEmptyStrings = false)]
         public string Autor { get; set; }
 
         [Display(Name = "Quantidade de Páginas")]
+        [Required(ErrorMessage = "Digite a quantidade de páginas", AllowEmptyStrings = false)]
         public int NumeroPaginas { get; set; }
     }
 }
