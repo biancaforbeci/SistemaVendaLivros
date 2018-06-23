@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SistemaVendaLivros.Models.Carrinho>
 
 @{ 
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Details";   
 }
 
 <div>
@@ -10,7 +10,15 @@
     <dl class="dl-horizontal">
 
         @foreach (var item in Model)
-        {
+    {
+        <dt>
+            @Html.Label("Capa do Livro Comprado")
+        </dt>
+
+        <dd>
+            <img src="~/fonts/@item._Livro.Foto" width="150" height="150" />
+        </dd>
+        
         <dt>
             @Html.Label("Nome do Cliente")
         </dt>
@@ -50,7 +58,7 @@
         <dd>
             @Html.DisplayFor(modelItem => item._Livro.NumeroPaginas)
         </dd>
-        }
+}
     </dl>
 </div>
 <p>
