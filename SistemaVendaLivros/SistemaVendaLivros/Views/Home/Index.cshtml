@@ -13,8 +13,10 @@
 </head>
 <body id="body">
 
-    <h1 style="text-align:center;font-family:'Goudy Stout'"><b>Estante de Livros</b></h1>
+    <h1 style="text-align:center;font-family:'Goudy Stout'"><b>Estante dos Livros</b></h1>
     <h4 style="text-align:center;font-family:Castellar"><b>Os melhores livros estão aqui !!</b></h4>
+    <br />
+    <br />
     <img src="~/fonts/estante-de-livros.jpg" id="estante" />
     <br />
     <br />
@@ -52,7 +54,7 @@
 
     <div id="divbody2">
         <div id="divesquerda">
-            <h4> <b>Dom Casmurro - Machado de Assis</b></h4>
+            <h4> <b>Dom Casmurro -<br />Machado de Assis</b></h4>
             <img src="~/fonts/dom casmurro.jpg" width="150" height="150" id="imagens" />
             <input type="button" class="btn btn-info" value="VEJA A DISPONIBILIDADE" onclick="location.href='@Url.Action("Index", "Livros")'" />
             <br />
@@ -60,7 +62,7 @@
         </div>
 
         <div id="divcentro">
-            <h4> <b>Felicidade Clandestina - Clarice Lispector</b></h4>
+            <h4> <b>Felicidade Clandestina -<br />Clarice Lispector</b></h4>
             <img src="~/fonts/felicidade.jpg" width="150" height="150" id="imagens" />
             <input type="button" class="btn btn-info" value="VEJA A DISPONIBILIDADE" onclick="location.href='@Url.Action("Index", "Livros")'" />
         </div>
@@ -83,7 +85,7 @@
         </div>
 
         <div id="divcentro">
-            <h4> <b> Android Essencial - Ricardo R. Lecheta</b></h4>
+            <h4> <b> Android Essencial -<br /> Ricardo R. Lecheta</b></h4>
             <img src="~/fonts/android.jpg" width="150" height="150" id="imagens" />
             <input type="button" class="btn btn-info" value="VEJA A DISPONIBILIDADE" onclick="location.href='@Url.Action("Index", "Livros")'" />
         </div>
@@ -95,9 +97,6 @@
             <input type="button" class="btn btn-info" value="VEJA A DISPONIBILIDADE" onclick="location.href='@Url.Action("Index", "Livros")'" />
         </div>
     </div>
-
-
-    @*<p> <a class="btn btn-primary btn-lg" @Html.ActionLink("Cadastre-se e compre já !!", "Create", "Clientes") &raquo;</a></p>*@
 
     <br />
     <br />
