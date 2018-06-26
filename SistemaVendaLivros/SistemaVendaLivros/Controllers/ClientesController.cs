@@ -107,14 +107,21 @@ namespace SistemaLivros.Controllers
 
             MeuContexto contexto = new MeuContexto();
             Cliente cli = contexto.Clientes.Find(id);
+            Cliente cliLogin = ProcuraLogin(User.Identity.GetUserId());
 
             if (cli == null)
             {
                 return HttpNotFound();
             }
 
-
-            return View(cli);
+            if ((cliLogin != null) && (cliLogin.ClienteID.Equals(cli.ClienteID) == true))
+            {
+                return View(cli);
+            }
+            else
+            {
+                return RedirectToAction("ProibidoEdicao");
+            }            
         }
 
 
@@ -140,18 +147,9 @@ namespace SistemaLivros.Controllers
             if (ModelState.IsValid)
             {
                 MeuContexto contexto = new MeuContexto();
-                Cliente cliLogin =ProcuraLogin(User.Identity.GetUserId());
-
-                if ((cliLogin != null) && (cliLogin.ClienteID.Equals(cli.ClienteID) == true) )
-                {
-                    EditEndereco(cli);
-                    cli.LoginID = User.Identity.GetUserId();
-                }
-                else
-                {
-                    return RedirectToAction("ProibidoEdicao");
-                }
-
+                EditEndereco(cli);
+                cli.LoginID = User.Identity.GetUserId();
+               
                 contexto.Entry(cli).State =
                     System.Data.Entity.EntityState.Modified;
                 contexto.SaveChanges();
@@ -177,6 +175,10 @@ namespace SistemaLivros.Controllers
             return View();
         }
 
+        public ActionResult ProibidoExcluir()
+        {
+            return View();
+        }
 
         public ActionResult Delete(int? id)
         {
@@ -187,14 +189,22 @@ namespace SistemaLivros.Controllers
 
             MeuContexto contexto = new MeuContexto();
             Cliente cli = contexto.Clientes.Find(id);
+            Cliente cliLogin = ProcuraLogin(User.Identity.GetUserId());
 
             if (cli == null)
             {
                 return HttpNotFound();
+            }      
+           
+
+            if ((cliLogin != null) && (cliLogin.ClienteID.Equals(cli.ClienteID) == true))
+            {
+                return View(cli);
             }
-
-
-            return View(cli);
+            else
+            {
+                return RedirectToAction("ProibidoExcluir");
+            }            
         }
 
         [HttpPost, ActionName("Delete")]

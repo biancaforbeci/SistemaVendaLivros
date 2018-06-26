@@ -227,6 +227,7 @@
     <Content Include="fonts\ken follett.jpg" />
     <Content Include="fonts\livraria.png" />
     <Content Include="fonts\proibido.jpg" />
+    <Content Include="fonts\proibidoexcluir.png" />
     <Content Include="fonts\stephenHawking.jpg" />
     <Content Include="fonts\tga.jpg" />
     <Content Include="fonts\valores.png" />
@@ -307,6 +308,7 @@
     <Content Include="Views\Clientes\LoginCliente.cshtml" />
     <Content Include="Views\Clientes\ProibidoEdicao.cshtml" />
     <Content Include="Views\Livros\Edit.cshtml" />
+    <Content Include="Views\Clientes\ProibidoExcluir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
