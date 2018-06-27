@@ -27,9 +27,13 @@ A partir que o cliente abre a página é possível visualizar as informações d
 
 ![livros home](https://user-images.githubusercontent.com/36732444/41999068-d5b0a416-7a32-11e8-92e9-70bb6b7429c4.png)
 
+### Missão 
+
+![missao](https://user-images.githubusercontent.com/36732444/41999443-e7bee3ba-7a33-11e8-817c-9e2d4c92697a.png)
+
 ### Lista de livros cadastrados
 
-![list](https://user-images.githubusercontent.com/36732444/41998846-1e5eef0c-7a32-11e8-88b6-4a5d7d1b5237.png)
+![list](https://user-images.githubusercontent.com/36732444/41999242-6bfcd0c0-7a33-11e8-8e82-14cd5921f7c5.png)
 
 ### Busca por título de livro
 
