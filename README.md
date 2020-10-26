@@ -1,3 +1,5 @@
+![](./book.png)
+
 # Sistema de Venda de Livros
 
 Esse projeto aborda um sistema web feito em Asp.net, no qual consiste num site de venda de livros. Dessa forma, com esse site será possível comprar e ver detalhes dos livros, além de cadastrar,editar e excluir os livros quando realizar acesso ao login administativo.
